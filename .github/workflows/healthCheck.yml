@@ -1,8 +1,14 @@
 name: Health check
 
 on:
-  schedule:
-    - cron: '5 * * * *'
+  push:
+    branches:
+      - master
+
+# Disabled the cron job, uncomment to enable
+# on:
+#   schedule:
+#     - cron: '0 0 28 * *'
 
 jobs:
   health_check:
