@@ -43,7 +43,7 @@ jobs:
             severity: info
             text: A new version of Pokedex deployed
             description: to https://pokedex-jh.fly.dev/
-            details: by ${{ github.actor }} commit ${{ github.event.head_commit.url }} by ${{ github.actor }} message ${{ github.event.head_commit.message }}
+            details: by ${{ github.event.commits[0].author.name }} commit ${{ github.event.commits[0].url }} hc ${{ github.event.head_commit.url }} 
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Build failure
         uses: rjstone/discord-webhook-notify@v1
@@ -51,8 +51,7 @@ jobs:
         with:
             severity: error
             text: Build failed!
-            description: Commit ${{ github.event.head_commit.url }} by ${{ github.actor }} failed
-            details: ${{ github.event.head_commit.message }}
+            description: Commit ${{ github.event.commits[0].url }} by ${{ github.event.commits[0].author.name }} failed
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
   tag_release:
     needs: [simple_deployment_pipeline]
