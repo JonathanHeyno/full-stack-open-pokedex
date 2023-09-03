@@ -43,7 +43,7 @@ jobs:
             severity: info
             text: A new version of Pokedex deployed
             description: to https://pokedex-jh.fly.dev/
-            details: by ${{ github.actor }} Commit ${{ github.event.head_commit.url }}
+            details: by ${{ github.actor }}
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Build failure
         uses: rjstone/discord-webhook-notify@v1
